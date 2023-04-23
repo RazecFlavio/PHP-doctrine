@@ -20,4 +20,9 @@ class Phone
         public readonly string $number
     ) {
     }
+
+    public function setStudent(Student $student): void
+    {
+        $this->student = $student;
+    }
 }

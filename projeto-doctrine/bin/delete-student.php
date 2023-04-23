@@ -8,12 +8,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $entityManager = EntityManagerCreator::createEntityManager();
 
-$student = new Student($argv[1]);
 
-for ($i = 2; $i < $argc; $i++) {
-    echo 'entrou';
-    $student->addPhone(new Phone($argv[$i]));
-}
+//$student = $entityManager->getPartialReference(Student::class, $argv[1]);
 
-$entityManager->persist($student);
+$student = $entityManager->find(Student::class, $argv[1]);
+
+$entityManager->remove($student);
 $entityManager->flush();
